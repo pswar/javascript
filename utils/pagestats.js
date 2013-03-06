@@ -1,5 +1,6 @@
 /*
- * Run following command in your browser to launch this utility. Wrote this code long time ago so it's possible some parts are out of date or invalid.
+ * Run following command in your browser to launch this utility(be sure to update the url for this file in below command). 
+ * Wrote this code long time ago so it's possible some parts are out of date or invalid.
  * 
 javascript:var _s = document.createElement('script');_s.type = 'text/javascript';_s.src = "<location of this file>/pagestats.js?"+(new Date());document.getElementsByTagName("head")[0].appendChild(_s);alert("A new window with results opened...");
  * 
@@ -18,7 +19,7 @@ javascript:var _s = document.createElement('script');_s.type = 'text/javascript'
     
     var tblStyle = 'style="background-color: rgb(255, 255, 240);border-collapse: collapse;border-color: gray gray gray gray;"';
     var gTotal = 0;
-    var h = '<div style="font-family:Georgia,tahoma,verdana;font-size:80%">';//'<link href="http://tools-jaswartz.corp.ebay.com/stuff/css/archWiki.css" type="text/css" rel="stylesheet" media="screen" />';
+    var h = '<div style="font-family:Georgia,tahoma,verdana;font-size:80%">';
     h += '<h2>' + document.location.href + '</h2> <b>@ ' + (new Date()) + '</b>';
     //debugger;
     h += '<hr/>';
@@ -73,14 +74,12 @@ javascript:var _s = document.createElement('script');_s.type = 'text/javascript'
     h += '</tr>';
     h += '<td>Size of inline JS</td><td id="tdInlineJS"><!--tdInlineJS--></td>';
     h += '</tr>';
-/*    
     if (document.all)
     {
         h += '<tr>';
         h += '<td>Total HTML elements on the page</td><td>' + document.all.length + '</td>';
         h += '</tr>';
     }
-*/    
     h += '<tr>';
     h += '<td>Size of inline CSS</td><td id="tdInlineCSS"><!--tdInlineCSS--></td>';
     h += '</tr>';
@@ -93,117 +92,6 @@ javascript:var _s = document.createElement('script');_s.type = 'text/javascript'
     }
     h += '</table>';
     
-    h += '<h3>Ebay Client Tracking data: </h3>';
-    if (typeof(_ebayClientTrack) != 'undefined')
-    {
-        h += '<table border=1 cellspacing=0 ' + tblStyle + '>';
-        for (var itm in _ebayClientTrack)
-        {
-            var tmp = typeof(_ebayClientTrack[itm]);
-            if(tmp == 'function' || tmp == 'object' || tmp == 'unknown')
-                continue;
-                
-            h += '<tr>';
-            h += '<td>' + itm + '</td><td>' + _ebayClientTrack[itm] + '</td>';
-            h += '</tr>';
-        }
-        if (_ebayClientTrack.startedAt && _ebayClientTrack.renderEndedAt && _ebayClientTrack.pageLoadedAt)
-        {
-            h += '<tr>';
-            h += '<td>HTML render time(Head to HTML render)</td><td><b>' + (_ebayClientTrack.renderEndedAt-_ebayClientTrack.startedAt) + '</b> ms</td>';
-            h += '</tr>';
-            h += '<tr>';
-            h += '<td>Load time(After HTML to onload event)</td><td><b>' + (_ebayClientTrack.pageLoadedAt-_ebayClientTrack.renderEndedAt) + '</b> ms</td>';
-            h += '</tr>';
-        }
-        h += '<tr>';
-        h += '<td>Raw</td><td><pre>' + _ebayClientTrack.toString() + '</pre></td>';
-        h += '</tr>';
-        h += '</table>';
-    }
-    
-    if (typeof(vjo) != 'undefined' && vjo.darwin && vjo.darwin.app && vjo.darwin.app.myebay && vjo.darwin.app.myebay.TrackingHead)
-    {
-        var TH = vjo.darwin.app.myebay.TrackingHead;
-        h += '<table border=1 cellspacing=0 ' + tblStyle + '>';
-        var tDt = (new Date(1970, 0, 1)).getTime();
-        for (var itm in TH)
-        {
-            var tmp = typeof(TH[itm]);
-            if(tmp == 'function' || tmp == 'object' || tmp == 'unknown')
-                continue;
-            h += '<tr>';
-            var sDt = '';
-            if (TH[itm] > tDt)
-            {
-                tmp = new Date(TH[itm]);
-                sDt = ' ['; 
-                sDt += tmp.getFullYear() + '/';
-                sDt += (tmp.getMonth()+1) + '/';
-                sDt += tmp.getDate() + ' ';
-                sDt += tmp.getHours() + ':';
-                sDt += tmp.getMinutes() + ':';
-                sDt += tmp.getSeconds() + ':';
-                sDt += tmp.getMilliseconds();
-                sDt += ']';
-            }
-            h += '<td>' + itm + '</td><td>' + TH[itm] + sDt + '</td>';
-            h += '</tr>';
-        }
-        
-        //if (TH.startedAt && TH.renderEndedAt && TH.pageLoadedAt)
-        //{
-            h += '<tr>';
-            h += '<td>HTML render time(Head to HTML render)</td><td><b>';
-            if ((TH.renderEndedAt-TH.startedAt) < 0)
-                h += 'Data not available!';
-            else
-                h += (TH.renderEndedAt-TH.startedAt) + ' ms';
-            h += '</b></td>';
-            h += '</tr>';
-            h += '<tr>';
-            h += '<td>Load time(After HTML to onload event)</td><td><b>';
-            if ((TH.pageLoadedAt-TH.renderEndedAt) < 0)
-                h += 'Data not available!';
-            else
-                h += (TH.pageLoadedAt-TH.renderEndedAt) + ' ms';
-            h += '</b></td>';
-            h += '</tr>';
-            h += '<tr style="background-color:#00ffff">';
-            h += '<td><b>Total Page Load time</b></td><td><b>';
-            if ((TH.pageLoadedAt-TH.startedAt) < 0)
-                h += 'Loading data not available!';
-            else
-                h += (TH.pageLoadedAt-TH.startedAt) + ' ms';
-            h += '</b></td>';
-            h += '</tr>';
-        //}
-        var dt = TH.getData();
-        /*
-        h += '<tr>';
-        h += '<td>Raw</td><td><pre>htmlRenderTime: ' + dt.htmlRenderTime + '\njsLoadTime: ' + dt.jsLoadTime + '\n<b>totalPageLoadTime: ' + dt.totalPageLoadTime + '</b></pre></td>';
-        h += '</tr>';
-        */
-        if (dt.customData)
-        {
-            h += '<tr>';
-            h += '<td>Custom Data</td><td><pre>';
-            for (var itm in dt.customData)
-            {
-                h += itm + ': ' + dt.customData[itm] + '\n';
-            }
-            h += '</pre></td></tr>';
-        }
-        h += '<tr>';
-        h += '<td>Raw post url: </td><td>' + TH.getPostUrl(dt) + '</td>';
-        h += '</tr>';
-        h += '</table>';
-        h += 'Note: <b>If any of the above values are zero then it means that value was not captured. This may cause invalid calculations.</b>';
-        writeToConsole("Ebay Data: \nhtmlRenderTime: " + dt.htmlRenderTime + 'ms \njsLoadTime: ' + dt.jsLoadTime + '\ntotalPageLoadTime: ' + dt.totalPageLoadTime + '');
-    }
-    else
-        h += '<p>Not Available!</p>';
-
     h += '<h3>JavaScript: </h3>';
     var scripts = document.getElementsByTagName("script");
 
@@ -330,17 +218,10 @@ javascript:var _s = document.createElement('script');_s.type = 'text/javascript'
     h += '<td>File Size</td>';
     h += '</tr>';
     var totImgSize = 0;
-    var totSgifs = 0;
     writeToConsole("Total Images: " + imgs.length);
     for (var i=0; i < imgs.length; i++)
     {
-        var isSgif = false;
-        if (imgs[i].src.indexOf('/s.gif') > 0)
-        {
-            isSgif = true;
-            totSgifs++;
-        }
-        h += '<tr style="' + ( isSgif ? 'background-color:rgb(255, 102, 0)':'' ) + '">';
+        h += '<tr>';
         h += '<td>' + (cnt++) + '</td>';
         h += '<td>';
         if (imgs[i].src)
@@ -367,64 +248,24 @@ javascript:var _s = document.createElement('script');_s.type = 'text/javascript'
     h += '<tr style="background-color:#d4d0c8"><td>&nbsp;</td><td style="text-align:right">Total size of the images:</td><td><b>' + totImgSize + ' Bytes</b></td></tr>';
     h += '</table>';
     h += '<b>Note: Consider optimizing the highlighted items.</b>'
-    h += '<h4>Total number of s.gif: ' + totSgifs + ' (Consider avoiding these images)</h4>';
 
-    if (typeof(vjo) != 'undefined' && vjo && vjo.Registry)
-    {
-        h += '<hr/>';
-        h += '<h3>VJO Objects: </h3>';
-        cnt = 1;
-        tot = 0;
-        h += '<table border=1 cellspacing=0 ' + tblStyle + '>';
-        h += '<tr style="background-color: rgb(204, 204, 204);font-weight:bold">';
-        h += '<td>&nbsp;</td>';
-        h += '<td>Registry Id</td>';
-        h += '<td>Id</td>';
-        h += '</tr>';
-        for (var itm in vjo.Registry.controls)
-        {
-            h += '<tr>';
-            h += '<td>' + cnt++ + '</td>';
-            h += '<td style="color:' + ( (itm.length > 20)?"red":"" ) + '">';
-            h += itm;
-            h += '</td>';
-            h += '<td>';
-            h += 'id=' + ( (vjo.Registry.controls[itm].id)?vjo.Registry.controls[itm].id:'' );
-            h += '</td>';
-            h += '</tr>';
-        }
-        gTotal += tot;
-        h += '<tr style="background-color:#d4d0c8"><td>&nbsp;</td><td style="text-align:right">Total number of VJO Objects:</td><td><b>' + (cnt-1) + '</b></td></tr>';
-        h += '<tr style="background-color:#d4d0c8"><td>&nbsp;</td><td>Note: Consider reducing the size of the ids of highlighted objects above.</td><td>&nbsp;</td></tr>';
-        h += '</table>';
-        if (window.console)
-        {
-			window.console.group("VJO Controls:");
-			window.console.dir(vjo.Registry.controls);
-			window.console.groupEnd()
-		}
-        writeToConsole("Number of VJO objects: " + (cnt-1));
-    }
-    
     //Display grant total
     h += '<p style="background-color:#00ffff"><b>Total (Inline JS + Size of the images + Inline CSS + External CSS): <u>' + gTotal + ' Bytes (~' + Math.round(gTotal/1024) + ' KB)</u></b> (This is accurate only in the browser where it is supported)</p>';
 
     h += '</div>';
 
     var url = "";
-    if (document.domain == 'ebay.com')
-    {
-        url = "http://d-sjc-webdev.corp.ebay.com/js/tools/util/blank.html?dd=true";
-        //document.domain = "" + document.domain;
-    }
     var win = window.open(url, 'w' + parseInt(1000*Math.random()), '');
-    //debugger;
-    //win.document.write('<div id="divLoading"><h2>Processing...</h2>(This may take a several seconds depending on page)</div>');
-    
-    win.document.write(h);
-    if (!document.all)
-        win.document.close();
-    
+    if (win != null && !win) {
+    	win.document.write(h);
+	    if (!document.all)
+	        win.document.close();
+	} else {
+		alert("Popup blocker enabled, writing the report to the page.");
+		var div = document.createElement('div');
+		div.innerHTML = h;
+		document.body.appendChild(div);
+	}
     h = '';
     if (window.console)
         window.console.groupEnd();
