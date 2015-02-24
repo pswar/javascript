@@ -1,4 +1,6 @@
-/*
+/**
+ * @author Sathish Pottavathini (spottavathini)
+ *
  * Run following command in your browser to launch this utility(be sure to update the url for this file in below command). 
  * Wrote this code long time ago so it's possible some parts are out of date or invalid.
  * 
