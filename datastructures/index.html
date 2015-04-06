@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>Simple Stack, Queue and Tree implementation in JavaScript</title>
+	</head>
+	<body>
+		<script type="text/javascript" src="Node.js"></script>
+		<script type="text/javascript" src="Stack.js"></script>
+		<script type="text/javascript" src="Queue.js"></script>
+		<script type="text/javascript" src="Tree.js"></script>
+		<script type="text/javascript">
+			document.writeln("<hr>Stack test: <br>");
+			var myS = new Stack();
+			myS.push(1);
+			myS.push(2);
+			myS.push(3);
+			myS.push(4);
+			var count = myS.size();
+			document.writeln("<br>myS.size() = " + myS.size());
+			document.writeln("<br>myS.isEmpty() = " + myS.isEmpty());
+			for (var i=0; i < count; i++) {
+				document.writeln("<br>" + i + ". myS.pop() = " + myS.pop());
+				document.writeln("<br>myS.size() = " + myS.size());
+			}
+			document.writeln("<br>myS.isEmpty() = " + myS.isEmpty());
+
+			document.writeln("<hr>Queue test: <br>");
+			var myQ = new Queue();
+			myQ.enqueue(1);
+			myQ.enqueue(2);
+			myQ.enqueue(3);
+			myQ.enqueue(4);
+			var count = myQ.size();
+			document.writeln("<br>myQ.size() = " + myQ.size());
+			document.writeln("<br>myQ.isEmpty() = " + myQ.isEmpty());
+			for (var i=0; i < count; i++) {
+				document.writeln("<br>" + i + ". myQ.dequeue() = " + myQ.dequeue());
+				document.writeln("<br>myQ.size() = " + myQ.size());
+			}
+			document.writeln("<br>myQ.isEmpty() = " + myQ.isEmpty());
+
+		</script>
+
+		<div id="result"></div>
+	</body>
+</html>
