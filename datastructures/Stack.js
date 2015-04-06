@@ -1,4 +1,10 @@
-function Stack(val) {
+/**
+ * @author Sathish Pottavathini (spottavathini)
+ *
+ * Simple implementation of commonly used data structures in JavaScript. Not meant to be robust but for starters use.
+ */
+
+ function Stack(val) {
 	var top = null, count = 0;
 
 	this.push = function (val) {

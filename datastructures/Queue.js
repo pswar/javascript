@@ -1,5 +1,11 @@
 
-function Queue(val) {
+/**
+ * @author Sathish Pottavathini (spottavathini)
+ *
+ * Simple implementation of commonly used data structures in JavaScript. Not meant to be robust but for starters use.
+ */
+
+ function Queue(val) {
 	var first = null, last = null, count = 0;
 
 	this.enqueue = function (val) {

@@ -1,3 +1,10 @@
+/**
+ * @author Sathish Pottavathini (spottavathini)
+ *
+ * Simple implementation of commonly used data structures in JavaScript. Not meant to be robust but for starters use.
+ */
+
+ //Work in progress
 function TreeNode(val, parent) {
 	var data = val;
 
