@@ -7,9 +7,11 @@
 //Work in progress
 function BinarySearchTree() {
 	var root = null;
+	var debugStr1 = 'Insert order: ';
 
 	this.insert = function (val) {
 		root = insert(val, root);
+		debugStr1 += val + ', '
 	}
 
 	this.remove = function (val) {
@@ -60,7 +62,7 @@ function BinarySearchTree() {
 	}
 
 	this.toHTMLString = function () {
-		return root.toHTMLString();
+		return debugStr1 + '<br> Tree: <br>' + root.toHTMLString();
 	}
 
 	// Private functions
@@ -113,19 +115,19 @@ function BinaryNode(val) {
 	this.right = null;
 
 	this.toHTMLString = function () {
-		var h = '';
-		h += this.value + ''
+		var h = '<ul>';
+		h += '<li>Value: ' + this.value + '</li>';
 		if (this.left) {
-			h += '(left=' + this.left.toHTMLString() + ', ';
+			h += '<li>left: ' + this.left.toHTMLString() + '</li>';
 		} else {
-			h += '(left=null, ';
+			h += '<li>left=null</li>';
 		}
 		if (this.right) {
-			h += 'right=' + this.right.toHTMLString() + ')\r';
+			h += '<li>right: ' + this.right.toHTMLString() + '</li>';
 		} else {
-			h += 'right=null)\r';
+			h += '<li>right=null</li>';
 		}
-		h += '';
+		h += '</ul>';
 
 		return h;
 	}
