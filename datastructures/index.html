@@ -7,6 +7,7 @@
 		<script type="text/javascript" src="Stack.js"></script>
 		<script type="text/javascript" src="Queue.js"></script>
 		<script type="text/javascript" src="Tree.js"></script>
+		<script type="text/javascript" src="BinarySearchTree.js"></script>
 		<script type="text/javascript">
 			document.writeln("<hr>Stack test: <br>");
 			var myS = new Stack();
@@ -38,8 +39,32 @@
 			}
 			document.writeln("<br>myQ.isEmpty() = " + myQ.isEmpty());
 
-		</script>
 
-		<div id="result"></div>
+			document.writeln("<hr>BinarySearchTree test: <br>");
+			var myBTree = new BinarySearchTree();
+			myBTree.insert(10);
+			myBTree.insert(1);
+			myBTree.insert(5);
+			myBTree.insert(23);
+			myBTree.insert(2);
+			myBTree.insert(9);
+			myBTree.insert(4);
+			myBTree.insert(15);
+			myBTree.insert(11);
+			myBTree.insert(8);
+			myBTree.insert(3);
+
+			//document.writeln("<br><pre>" + myBTree.toHTMLString() + '</pre>');
+
+			document.writeln("<br>myBTree.find(10) = " + myBTree.find(10));
+			document.writeln("<br>myBTree.find(99) = " + myBTree.find(99));
+			document.writeln("<br>myBTree.min() = " + myBTree.min());
+			document.writeln("<br>myBTree.max() = " + myBTree.max());
+			document.writeln("<br>myBTree.remove(23) = " + myBTree.remove(23));
+			document.writeln("<br>myBTree.remove(1) = " + myBTree.remove(1));
+			document.writeln("<br>myBTree.min() = " + myBTree.min());
+			document.writeln("<br>myBTree.max() = " + myBTree.max());
+
+		</script>
 	</body>
 </html>
