@@ -40,6 +40,59 @@
 			document.writeln("<br>myQ.isEmpty() = " + myQ.isEmpty());
 
 
+			document.writeln("<hr>Tree test: <br>");
+
+			var r = new TreeNode(1);
+			var r1 = new TreeNode(2);
+			r.addChild(r1);
+			var r2 = new TreeNode(3);
+			r.addChild(r2);
+			var r3 = new TreeNode(4);
+			r3.addChild(new TreeNode(10));
+			r3.addChild(new TreeNode(11));
+			r3.addChild(new TreeNode(12));
+			r1.addChild(r3);
+			var r4 = new TreeNode(5);
+			r1.addChild(r4);
+			var r5 = new TreeNode(6);
+			r2.addChild(r5);
+			var r6 = new TreeNode(7);
+			r5.addChild(r6);
+			var r7 = new TreeNode(8);
+			r6.addChild(r7);
+			var r8 = new TreeNode(9);
+			r6.addChild(r8);
+
+			document.writeln(r.toHTMLString());
+
+			function depthFirstVisit(node) {
+				document.writeln('<br>Data: ' + node.data);
+				for (var i=0; i<node.children.length; i++) {
+					depthFirstVisit(node.children[i]);
+				}
+			}
+			document.writeln("<br>depthFirstVisit: <br>");
+			depthFirstVisit(r);
+
+			function breadthFirstVisit(node) {
+				
+				var q = [];
+				q.push(node);
+
+				while (q.length > 0) {
+					var n = q[0];
+					document.writeln('<br>Data: ' + n.data);
+					n.visited = true;
+					q.splice(0, 1);
+					for (var i=0; i<n.children.length; i++) {
+						q.push(n.children[i]);
+					}
+				}
+			}
+
+			document.writeln('<br>breadthFirstVisit: <br>');
+			breadthFirstVisit(r);
+
 			document.writeln("<hr>BinarySearchTree test: <br>");
 			var myBTree = new BinarySearchTree();
 			myBTree.insert(10);

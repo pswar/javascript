@@ -5,7 +5,7 @@
  * Simple implementation of commonly used data structures in JavaScript. Not meant to be robust but for starters use.
  */
 
- function Queue(val) {
+ function Queue() {
 	var first = null, last = null, count = 0;
 
 	this.enqueue = function (val) {
@@ -19,6 +19,7 @@
 		}
 		
 		count++;
+		//return newNode;
 	}
 
 	this.dequeue = function () { //returns val
