@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Phone phrase generator</title>
+		<link rel='stylesheet' id='pinboard-web-font-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600	italic|Oswald:300,300italic,regular,italic,600,600italic&#038;subset=latin' type='text/css' media='all' />
+	</head>
+	<body style="margin:10px">
+	<h1>Phone phrase calculator</h1>
+
+	<p>A simple utility to convert a phone number to phrases. Something similar to converting 1-800-266-2278 to all the possible permutations and one of them would be 1-800-COMCAST</p>
+	<script src="PhonePhrase.js"> </script>
+	<script type="text/javascript">
+		function calculatePermutations(phone) {
+			if (!phone) {
+				alert("Enter a phone number. \nEx: 555-1234");
+				document.forms[0].txtPhone.focus();
+			}
+			var div = document.getElementById('msg');
+			if (div) {
+				div.innerHTML = 'Calculating...';
+				
+				var output = getPermutations(phone);
+				var h = '';
+				h += '<table style="width:300px;border:2px;margine:4px" border="1" cellspacing="0">';
+				h += '<tr><th>No</th><th>Phrase</th></tr>';
+				for (var i=0, l = output.length; i<l; i++) {
+					h += '<tr><td width="25px">' + (i+1) + '</td><td>' + output[i] + '</td></tr>';
+				}
+				h += '</table>';
+				div.innerHTML = h;
+				document.getElementById('msgDone').innerHTML = "Done generating!";
+			}
+		}
+	</script>
+	<form name="frmMain">
+		Enter a phone number: <input type=text name=txtPhone value="555-1234" maxlength="8" placeholder="Ex: 555-1234"> <br/>
+		<input type=button name=btnGo value="Calculate" onclick="calculatePermutations(document.forms['frmMain'].txtPhone.value)"> <span id=msgDone style="color: green"></span><br /> <hr>
+		<div id="msg"></div>
+	</form>
+	</body>
+</html>
+
