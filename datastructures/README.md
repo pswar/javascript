@@ -1,5 +1,5 @@
 Data Structues in JavaScript
 ==========
 
-Purpose of this is to provide simple impementation for commonly use Data Structures in JavaScript for learning purposes. 
-Obviously not robust enough to cover all features and optimizations.
+Simple impementations for commonly used Data Structures in JavaScript for learning purposes. 
+Using this repo just as a play ground to practice my knowledge and learnings through various channels. Obviously, not robust enough to cover every edge case and feature.
