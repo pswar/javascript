@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>Common utilities implementation in JavaScript</title>
+	</head>
+	<body>
+		<script type="text/javascript" src="fibonacci.js"></script>
+		<script type="text/javascript" src="sumWithoutPlus.js"></script>
+		<script type="text/javascript">
+			function w(h, newH) {
+				var br = newH?'<hr>':'<br>';
+				document.writeln(br + h);
+			}
+
+			w("Fibonacci series ", true);
+			w("fibSeries(25) = " + fibSeries(25));
+
+			w("Sum without using arthimetic", true);
+			w("sumWithoutPlus(1, 2)=" + sumWithoutPlus(1,2));			
+			w("sumWithoutPlus(11, 22)=" + sumWithoutPlus(11,22));			
+			w("sumWithoutPlus(197, 245)=" + sumWithoutPlus(197,245));			
+			w("sumWithoutPlus(796, 456)=" + sumWithoutPlus(796,456));			
+		</script>
+	</body>
+</html>
