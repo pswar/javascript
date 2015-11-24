@@ -3,13 +3,117 @@
 		<title>Common utilities implementation in JavaScript</title>
 	</head>
 	<body>
+		<div id=msg> </div>
 		<script type="text/javascript" src="fibonacci.js"></script>
 		<script type="text/javascript" src="sumWithoutPlus.js"></script>
+		<script type="text/javascript" src="longestSubstrForN.js"></script>
+		<script type="text/javascript" src="isomorphic.js"></script>
+		<script type="text/javascript" src="interval.js"></script>
+		<script type="text/javascript" src="shuffleArray.js"></script>
+		<script type="text/javascript" src="breadthFirst.js"></script>
+		<script type="text/javascript" src="flowerbed.js"></script>
+		<script type="text/javascript" src="triangle.js"></script>
+		<script type="text/javascript" src="palindromic.js"></script>
+		<script type="text/javascript" src="depthSum.js"></script>
+		<script type="text/javascript" src="100game.js"></script>
+		<script type="text/javascript" src="flipTree.js"></script>
+		<script type="text/javascript" src="wordDistance.js"></script>
+		<script type="text/javascript" src="mergeArrays.js"></script>
+		<script type="text/javascript" src="sqrt.js"></script>
+		<script type="text/javascript" src="subArray.js"></script>
+
 		<script type="text/javascript">
 			function w(h, newH) {
 				var br = newH?'<hr>':'<br>';
 				document.writeln(br + h);
 			}
+
+
+			var tmp = getTriangle([10, 21, 22, 100, 101, 200, 300]);
+			w("Get triangle for [10, 21, 22, 100, 101, 200, 300] = <br>" + tmp.join("<br>"));
+			tmp = getTriangle([4, 10, 6, 5, 7]);
+			w("Get triangle for [4, 10, 6, 5, 7] = <br>" + tmp.join("<br>"), true);
+			
+			w("maxSubArray([6, -3, -10, 0, 2]): 180 = " + maxSubArray([6, -3, -10, 0, 2]), true);
+			w("maxSubArray([-1, -3, -10, 0, 60]): 60 = " + maxSubArray([-1, -3, -10, 0, 60]));
+			w("maxSubArray([-2, -3, 0, -2, -40]): 80 = " + maxSubArray([-2, -3, 0, -2, -40]));
+
+
+			w("sqrt of 1: " + sqrt(1), true);
+			w("sqrt of 3: " + sqrt(3));
+			w("sqrt of 4: " + sqrt(4));
+			w("sqrt of 7: " + sqrt(7));
+			w("sqrt of 9: " + sqrt(9));
+
+			w("Merge: [1, 23, 26, 40, 45] and [-1, 2, 6, 26, 40, 50, 75]: " + mergeSorted([1, 23, 26, 40, 45], [-1, 2, 6, 26, 40, 50, 75]), true);
+	
+
+			w("Distance cat=>dog: " + wordDistance("cat", "dog"), true);
+			w("Distance cat=>bet: " + wordDistance("cat", "bet"), true);
+
+			w("100Game with 1-15 and 100" + canIWin(1, 1), true);
+
+			w("depthSum([[1,1], 2, [1, 1]]) = " + depthSum([[1,1], 2, [1, 1]]), true);
+			w("depthSum([1, [4, [6]]]) = " + depthSum([1, [4, [6]]]));
+
+			w("Polindrome index for [4,1,2,3,4,5,6,5,4,3,4,4,4,4,4,4,4] = " + maxLengthPalindrome([4,1,2,3,4,5,6,5,4,3,4,4,4,4,4,4,4]), true);
+
+			w("isomorphic? app, foo: " + isIsomorphic("app", "foo"), true);
+			w("isomorphic? foo, bar: " + isIsomorphic("foo", "bar"));
+			w("isomorphic? turtle, tletur: " + isIsomorphic("turtle", "tletur"));
+			w("isomorphic? ab, ca: " + isIsomorphic("ab", "ca"));
+			w("isomorphic? azz, zza: " + isIsomorphic("azz", "zza"));
+
+			w("Interval merges: Existing [-10, -1], [0,2], [4,10], insert [-5, 1] ", true);
+
+			insertInterval(-10, -1);
+			insertInterval(0, 2);
+			insertInterval(4,10);
+			w("Before insert: " + intervals);
+			insertInterval(-5, 1);
+			w("After insert[-5, 1]: " + intervals);
+
+			w("Shuffle Array : ", true);
+			var arr = [1, 2, 3, 4, 5, 6];
+			w("Before shuffle: " + arr);
+			shuffle(arr);
+			w("After 1: " + arr);
+			shuffle(arr);
+			w("After 2: " + arr);
+			shuffle(arr);
+			w("After 3: " + arr);
+			shuffle(arr);
+			w("After 4: " + arr);
+			shuffle(arr);
+			w("After 5: " + arr);
+
+			w("breadthFirst print", true);
+			var root = new BinaryTree(1);
+			root.left = new BinaryTree(3);
+			root.right = new BinaryTree(5);
+
+			root.left.left = new BinaryTree(2);
+			root.left.right = new BinaryTree(4);
+			root.right.right = new BinaryTree(7);
+
+			root.left.left.left = new BinaryTree(9);
+			root.left.left.right = new BinaryTree(6);
+
+			root.left.right.right = new BinaryTree(8);
+			w(printAt(root, 0));
+
+
+			w("canPlaceFlowers([1,0,0,0,0,0,1,0,0], 3) = " + canPlaceFlowers([1,0,0,0,0,0,1,0,0], 3), true);
+			w("canPlaceFlowers([1,0,0,0,0,0,1,0,0], 4) = " + canPlaceFlowers([1,0,0,0,0,0,1,0,0], 4));
+
+			w("canPlaceFlowers([1,0,0,1,0,0,1,0,0], 1) = " + canPlaceFlowers([1,0,0,1,0,0,1,0,0], 1));
+			w("canPlaceFlowers([1,0,0,1,0,0,1,0,0], 2) = " + canPlaceFlowers([1,0,0,1,0,0,1,0,0], 2));
+
+			w("canPlaceFlowers([0], 1) = " + canPlaceFlowers([0], 1));
+			w("canPlaceFlowers([0], 2) = " + canPlaceFlowers([0], 2));
+
+			w("canPlaceFlowers([0, 0, 1], 1) = " + canPlaceFlowers([0, 0, 1], 1));
+			w("canPlaceFlowers([0, 0, 1], 2) = " + canPlaceFlowers([0, 0, 1], 2));
 
 			w("Fibonacci series ", true);
 			w("fibSeries(25) = " + fibSeries(25));
@@ -18,7 +122,71 @@
 			w("sumWithoutPlus(1, 2)=" + sumWithoutPlus(1,2));			
 			w("sumWithoutPlus(11, 22)=" + sumWithoutPlus(11,22));			
 			w("sumWithoutPlus(197, 245)=" + sumWithoutPlus(197,245));			
-			w("sumWithoutPlus(796, 456)=" + sumWithoutPlus(796,456));			
+			w("sumWithoutPlus(796, 456)=" + sumWithoutPlus(796,456));		
+
+
+			//var inStr="aabbadefghaabbaagad";
+			//w("Find longest substring with n unique chars for '" + inStr + "'", true);
+
+			//w(getLongestSubstrForN(inStr, 2));
+
+		</script>
+		<script type="text/javascript">
+			function Node(data) {
+			    this.data = data;
+			    this.left = null;
+			    this.right = null;
+			}
+
+			function LevelItem(level, node) {
+			    this.level = level;
+			    this.node = node;
+			}
+
+			var head = new Node(1);
+			head.left = new Node(3);
+			head.right = new Node(5);
+			head.right.right = new Node(7);
+			head.left.left = new Node(2);
+			head.left.right = new Node(4);
+			head.left.left.left = new Node(9);
+			head.left.right.right = new Node(8);
+
+			function printByLevel() {
+			    var item, levels = [], stack = [new LevelItem(0, head)];
+
+			    while (stack.length > 0) {
+			        item = stack.pop();
+
+			        if (item.node.right) {
+			            stack.push(new LevelItem(item.level + 1, item.node.right));
+			        }
+
+			        if (item.node.left) {
+			            stack.push(new LevelItem(item.level + 1, item.node.left));
+			        }
+
+			        if (levels[item.level]) {
+			            levels[item.level].push(item);
+			        } else {
+			            levels[item.level] = [item];
+			        }
+			    }
+
+			    var h = '';
+			    for (var i=0; i<levels.length; i++) {
+			        for (var j=0; j<levels[i].length; j++) {
+				    	h += ' ' + levels[i][j].node.data;
+			            
+			        }
+			        h += '<br>';
+			    }
+			    var div = document.getElementById('msg');
+			    div.innerHTML = h;
+			}
+
+			printByLevel();
+
 		</script>
 	</body>
 </html>

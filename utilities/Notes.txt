@@ -1,0 +1,82 @@
+/**
+ * @author Sathish Pottavathini (spottavathini)
+ *
+ * Simple implementation of commonly used utilities. 
+ * Not meant to be robust but for starters use.
+ * 
+ * Given a grid of m by n, write an algo to compute all paths from 0,0 to m, n such that you can always
+ * step horizontally or vertically but cannot reverse.
+*/ 
+
+var grid = [
+	["a", "b", "c"],
+	["d", "e", "f"],
+	["g", "h", "i"]
+];
+
+function arrayPaths() {
+	//Horizontal: [0,0], [0,1], [0,2], [1,0], [1,1], [1,2], [2,0], [2,1], [2,2]
+	//Vertical: [0,0], [1,0], [2,0], [0,1], [1,1], [2,1], [0,2], [1,2], [2,2]
+}
+
+1.
+You have a potentially very-large set of documents, which   are potentially very-large, and contain text. For searching these documents, 
+they've been pre-processed into a (very-large) table mapping words to the set of documents that contain each word. 
+E.g. (word) : (documents (referenced by ID) containing that word) Apple: 1, 4, 5, 6, 32 Banana: 5, 6, 7, 9, 32 Cantaloupe: 1, 2, 6 ... 
+Clients will pass in a set of words (e.g. {apple, cantaloupe}), 
+and want the set of document IDs that contain all the words. 
+(e.g. {apple, cantaloupe} -> {1, 6}) 
+Design a distributed system to implement this, bearing in mind that the number of documents, 
+the number of words, and the number of document-IDs-per-word are potentially really, really big. 
+
+2.
+Graph and tree problems, a geometry/math question, a well-known OOP design question, 
+and explain a previous project as if explaining it to two new teammates.  
+
+3. 
+Find a triagle from a list of points  
+
+4.
+maxmimun subarray 
+
+5.
+two words isIsomorphic 
+
+6.
+sqrt  : Newton Raphson's Method:
+
+5. 
+Maximum product subset with negative and positive integers 
+
+6.
+Distance between words
+
+7.
+Binary Tree traversal 
+
+8.
+Consider an X x Y array of 1's and 0s. The X axis   represents "influences" meaning that X influences Y. So, for example, if $array[3,7] is 1 that means that 3 influences 7. An "influencer" is someone who influences every other person, but is not influenced by any other member. Given such an array, write a function to determine whether or not an "influencer" exists in the array. 
+
+9.
+Find longest arthimetic progression in an array of integers
+
+http://www.glassdoor.com/Interview/LinkedIn-Senior-Software-Engineer-Interview-Questions-EI_IE34865.0,8_KO9,33_IP2.htm
+10.
+Design and implement LRU cache: http://stackoverflow.com/questions/221525/how-would-you-implement-an-lru-cache-in-java-6
+
+11.
+Reverse a linked list
+
+12.
+Online system design for monitoring
+
+13.
+How do you rampup someone fresh from school  
+
+14.
+
+Merge two sorted arrays, result should be sorted too
+
+http://www.careercup.com/question?id=5746483519291392
+
+
